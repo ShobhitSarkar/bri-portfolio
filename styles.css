@@ -408,7 +408,7 @@ em { font-style: italic; }
   outline-offset: 6px;
 }
 .post {
-  flex: 0 0 clamp(272px, 82vw, 460px);
+  flex: 0 0 clamp(272px, 82vw, 504px);
   scroll-snap-align: start;
   min-width: 0;
   display: flex;
@@ -443,6 +443,12 @@ em { font-style: italic; }
 @media (prefers-reduced-motion: reduce) {
   .carousel__rail { scroll-behavior: auto; }
 }
+@media (max-width: 720px) {
+  .carousel__controls {
+    justify-content: center;
+    margin-top: 1.25rem;
+  }
+}
 .post__embed {
   background: var(--paper);
   border: 1px solid var(--rule);
@@ -454,6 +460,11 @@ em { font-style: italic; }
   border: 0;
   background: var(--paper);
   color-scheme: light;
+}
+/* Standardize embed height on desktop so cards sit level; shorter
+   posts fill with clean whitespace rather than ragged heights. */
+@media (min-width: 721px) {
+  .post__embed iframe { height: 680px; }
 }
 .post__body { margin-top: 1.3rem; }
 .post__meta {

@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="styles.css?v=3" />
+  <link rel="stylesheet" href="styles.css?v=4" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -109,8 +109,9 @@
         behind posts published to real audiences on LinkedIn.
       </p>
 
-      <div class="posts">
-        <figure class="post reveal">
+      <div class="carousel reveal" data-carousel>
+        <div class="carousel__rail" id="posts-rail" tabindex="0" role="group" aria-label="Published LinkedIn posts">
+        <figure class="post">
           <div class="post__embed">
             <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7472319519185870848?compact=1" height="399" width="504" frameborder="0" allowfullscreen title="LinkedIn post by Brianna Rivera — brand film" loading="lazy"></iframe>
           </div>
@@ -124,7 +125,7 @@
           </figcaption>
         </figure>
 
-        <figure class="post reveal">
+        <figure class="post">
           <div class="post__embed">
             <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7487548964242800640?collapsed=1" height="550" width="504" frameborder="0" allowfullscreen title="LinkedIn post by Brianna Rivera — announcement" loading="lazy"></iframe>
           </div>
@@ -138,7 +139,7 @@
           </figcaption>
         </figure>
 
-        <figure class="post reveal">
+        <figure class="post">
           <div class="post__embed">
             <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7486463870753124352?collapsed=1" height="628" width="504" frameborder="0" allowfullscreen title="LinkedIn post by Brianna Rivera — culture" loading="lazy"></iframe>
           </div>
@@ -152,7 +153,7 @@
           </figcaption>
         </figure>
 
-        <figure class="post reveal">
+        <figure class="post">
           <div class="post__embed">
             <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7455648545212219392?collapsed=1" height="546" width="504" frameborder="0" allowfullscreen title="LinkedIn post by Brianna Rivera — brand campaign" loading="lazy"></iframe>
           </div>
@@ -166,7 +167,7 @@
           </figcaption>
         </figure>
 
-        <figure class="post reveal">
+        <figure class="post">
           <div class="post__embed">
             <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7486148582241308673?collapsed=1" height="670" width="504" frameborder="0" allowfullscreen title="LinkedIn post by Brianna Rivera — team spotlight" loading="lazy"></iframe>
           </div>
@@ -179,6 +180,16 @@
             <p class="post__desc">Introducing Christopher Kopiwoda, a Michigan State mechanical-engineering major — a spotlight post welcoming him to the components team.</p>
           </figcaption>
         </figure>
+        </div>
+
+        <div class="carousel__controls">
+          <button class="carousel__btn" type="button" data-carousel-prev aria-label="Previous posts" aria-controls="posts-rail">
+            <svg viewBox="0 0 24 24" aria-hidden="true" width="20" height="20"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button class="carousel__btn" type="button" data-carousel-next aria-label="Next posts" aria-controls="posts-rail">
+            <svg viewBox="0 0 24 24" aria-hidden="true" width="20" height="20"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
       </div>
     </section>
 
@@ -511,6 +522,6 @@
     </div>
   </div>
 
-  <script src="script.js?v=3" defer></script>
+  <script src="script.js?v=4" defer></script>
 </body>
 </html>

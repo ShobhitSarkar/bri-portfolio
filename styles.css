@@ -390,19 +390,22 @@ em { font-style: italic; }
   margin-bottom: clamp(2.5rem, 5vw, 4.5rem);
 }
 .posts {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+  display: flex;
+  flex-wrap: wrap;
   gap: clamp(2rem, 4vw, 3.5rem) clamp(1.5rem, 3vw, 3rem);
-  align-items: start;
+  align-items: flex-start;
 }
 .post {
-  display: flex; flex-direction: column;
+  flex: 1 1 340px;
+  min-width: 0;
+  max-width: 504px;
+  display: flex;
+  flex-direction: column;
 }
 .post__embed { width: 100%; }
 .post__embed iframe {
   display: block;
   width: 100%;
-  max-width: 504px;
   border: 1px solid var(--rule);
   background: var(--paper);
   color-scheme: light;

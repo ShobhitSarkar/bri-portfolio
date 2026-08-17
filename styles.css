@@ -400,7 +400,7 @@ em { font-style: italic; }
      so mobile page scrolling stays smooth over the carousel. */
   touch-action: pan-x;
   overscroll-behavior-x: contain;
-  scroll-snap-type: x proximity;
+  scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   scrollbar-width: none;
   padding-bottom: 0.25rem;
@@ -448,10 +448,15 @@ em { font-style: italic; }
   .carousel__rail { scroll-behavior: auto; }
 }
 @media (max-width: 720px) {
-  /* Flank the card: one arrow on each side, centered over the embed. */
+  /* Center each card so the embed sits equidistant between the arrows,
+     and always snap to rest on the next card. */
+  .post { scroll-snap-align: center; }
+  .carousel__rail { padding-inline: 4vw; }
+
+  /* Flank the card: one arrow on each side, over the embed. */
   .carousel__controls {
     position: absolute;
-    top: 290px;
+    top: 200px;
     left: 0; right: 0;
     transform: translateY(-50%);
     margin: 0;
@@ -481,11 +486,6 @@ em { font-style: italic; }
   border: 0;
   background: var(--paper);
   color-scheme: light;
-}
-/* Standardize embed height on desktop so cards sit level; shorter
-   posts fill with clean whitespace rather than ragged heights. */
-@media (min-width: 721px) {
-  .post__embed iframe { height: 680px; }
 }
 .post__body { margin-top: 1.3rem; }
 .post__meta {

@@ -395,12 +395,15 @@ em { font-style: italic; }
   align-items: flex-start;
   gap: clamp(1.25rem, 3vw, 2.5rem);
   overflow-x: auto;
-  scroll-snap-type: x mandatory;
+  overflow-y: hidden;
+  /* Only pan horizontally here; vertical drags fall through to the page
+     so mobile page scrolling stays smooth over the carousel. */
+  touch-action: pan-x;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
   scroll-behavior: smooth;
   scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
   padding-bottom: 0.25rem;
-  /* bleed the rail to the page edge on small screens so cards can peek */
   scroll-padding-inline: 0;
 }
 .carousel__rail::-webkit-scrollbar { display: none; }

@@ -417,6 +417,25 @@ em { font-style: italic; }
   background: var(--paper);
   color-scheme: light;
 }
+.post__body { margin-top: 1.3rem; }
+.post__meta {
+  display: flex; align-items: center; gap: 0.8rem;
+  margin-bottom: 0.55rem;
+}
+.post__index { font-family: var(--serif); color: var(--accent); font-size: 0.85rem; }
+.post__cat {
+  font-size: 0.7rem; letter-spacing: 0.13em; text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.post__title {
+  font-family: var(--serif); font-weight: 400;
+  font-size: clamp(1.4rem, 2.4vw, 1.95rem);
+  line-height: 1.12; letter-spacing: -0.01em;
+}
+.post__desc {
+  color: var(--ink-soft); margin-top: 0.7rem; max-width: 46ch;
+  font-size: 0.96rem; line-height: 1.55;
+}
 
 /* ————————————————————————————— Lightbox ————————————————————————————— */
 .lightbox {

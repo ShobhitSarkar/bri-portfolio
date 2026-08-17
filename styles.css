@@ -392,6 +392,7 @@ em { font-style: italic; }
 .carousel { position: relative; }
 .carousel__rail {
   display: flex;
+  align-items: flex-start;
   gap: clamp(1.25rem, 3vw, 2.5rem);
   overflow-x: auto;
   scroll-snap-type: x mandatory;
@@ -444,14 +445,31 @@ em { font-style: italic; }
   .carousel__rail { scroll-behavior: auto; }
 }
 @media (max-width: 720px) {
+  /* Flank the card: one arrow on each side, centered over the embed. */
   .carousel__controls {
-    justify-content: center;
-    margin-top: 1.25rem;
+    position: absolute;
+    top: 290px;
+    left: 0; right: 0;
+    transform: translateY(-50%);
+    margin: 0;
+    justify-content: space-between;
+    pointer-events: none;
+    z-index: 2;
   }
+  .carousel__btn {
+    pointer-events: auto;
+    background: var(--paper);
+    border-color: transparent;
+    box-shadow: 0 2px 14px rgba(23, 21, 15, 0.16);
+  }
+  .carousel__btn:hover {
+    background: var(--paper); color: var(--ink); border-color: transparent;
+  }
+  .carousel__btn:first-child { margin-left: -0.35rem; }
+  .carousel__btn:last-child { margin-right: -0.35rem; }
 }
 .post__embed {
   background: var(--paper);
-  border: 1px solid var(--rule);
   overflow: hidden;
 }
 .post__embed iframe {

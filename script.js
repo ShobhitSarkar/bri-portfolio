@@ -30,11 +30,14 @@
   const lightbox = document.getElementById("lightbox");
   if (lightbox) {
     const imgEl = document.getElementById("lb-img");
+    const embedEl = document.getElementById("lb-embed");
+    const linkEl = document.getElementById("lb-link");
     const titleEl = document.getElementById("lb-title");
     const metaEl = document.getElementById("lb-meta");
     const captionEl = document.getElementById("lb-caption");
     const indexEl = document.getElementById("lb-index");
     const totalEl = document.getElementById("lb-total");
+    const countEl = lightbox.querySelector(".lightbox__count");
     const closeEls = lightbox.querySelectorAll("[data-lb-close]");
     const prevBtn = lightbox.querySelector("[data-lb-prev]");
     const nextBtn = lightbox.querySelector("[data-lb-next]");
@@ -57,19 +60,44 @@
     };
 
     const openLightbox = (btn) => {
-      try {
-        images = JSON.parse(btn.dataset.images || "[]");
-        alts = JSON.parse(btn.dataset.alts || "[]");
-      } catch (e) {
-        images = [];
-        alts = [];
-      }
-      if (!images.length) return;
-      current = 0;
       titleEl.innerHTML = btn.dataset.title || "";
       metaEl.textContent = btn.dataset.meta || "";
       captionEl.innerHTML = btn.dataset.caption || "";
-      render();
+
+      const embedSrc = btn.dataset.embed;
+      if (embedSrc) {
+        // Live embed mode (e.g. LinkedIn posts)
+        images = [];
+        imgEl.hidden = true;
+        imgEl.removeAttribute("src");
+        embedEl.hidden = false;
+        embedEl.src = embedSrc;
+        prevBtn.hidden = true;
+        nextBtn.hidden = true;
+        if (countEl) countEl.hidden = true;
+        linkEl.hidden = false;
+        linkEl.href = btn.dataset.href || "#";
+        lightbox.classList.add("is-embed");
+      } else {
+        // Image gallery mode
+        try {
+          images = JSON.parse(btn.dataset.images || "[]");
+          alts = JSON.parse(btn.dataset.alts || "[]");
+        } catch (e) {
+          images = [];
+          alts = [];
+        }
+        if (!images.length) return;
+        embedEl.hidden = true;
+        embedEl.removeAttribute("src");
+        imgEl.hidden = false;
+        if (countEl) countEl.hidden = false;
+        linkEl.hidden = true;
+        lightbox.classList.remove("is-embed");
+        current = 0;
+        render();
+      }
+
       lastFocused = btn;
       lightbox.hidden = false;
       // force reflow so the transition runs
@@ -85,6 +113,7 @@
       const done = () => {
         lightbox.hidden = true;
         imgEl.removeAttribute("src");
+        embedEl.removeAttribute("src");
         lightbox.removeEventListener("transitionend", done);
       };
       if (prefersReduced) {
@@ -115,7 +144,7 @@
       else if (e.key === "ArrowRight") step(1);
       else if (e.key === "Tab") {
         // simple focus trap across the interactive controls
-        const focusable = [closeBtn, prevBtn, nextBtn].filter((el) => el && !el.hidden);
+        const focusable = [closeBtn, prevBtn, nextBtn, linkEl].filter((el) => el && !el.hidden);
         if (!focusable.length) return;
         const first = focusable[0];
         const last = focusable[focusable.length - 1];
@@ -129,52 +158,6 @@
       }
     });
   }
-
-  /* — Horizontal carousels (Published Work) — */
-  document.querySelectorAll("[data-carousel]").forEach((root) => {
-    const rail = root.querySelector(".carousel__rail");
-    const prev = root.querySelector("[data-carousel-prev]");
-    const next = root.querySelector("[data-carousel-next]");
-    const controls = root.querySelector(".carousel__controls");
-    if (!rail || !prev || !next) return;
-
-    const stepAmount = () => {
-      const card = rail.querySelector(".post");
-      const gap = parseFloat(getComputedStyle(rail).columnGap) || 0;
-      const cardWidth = card ? card.getBoundingClientRect().width : rail.clientWidth;
-      return cardWidth + gap;
-    };
-
-    const update = () => {
-      const maxScroll = rail.scrollWidth - rail.clientWidth;
-      const overflowing = maxScroll > 2;
-      if (controls) controls.hidden = !overflowing;
-      prev.disabled = rail.scrollLeft <= 1;
-      next.disabled = rail.scrollLeft >= maxScroll - 1;
-    };
-
-    prev.addEventListener("click", () => rail.scrollBy({ left: -stepAmount() }));
-    next.addEventListener("click", () => rail.scrollBy({ left: stepAmount() }));
-
-    let ticking = false;
-    rail.addEventListener(
-      "scroll",
-      () => {
-        if (!ticking) {
-          window.requestAnimationFrame(() => {
-            update();
-            ticking = false;
-          });
-          ticking = true;
-        }
-      },
-      { passive: true }
-    );
-    window.addEventListener("resize", update);
-    // recompute once embeds have had a chance to lay out
-    window.addEventListener("load", update);
-    update();
-  });
 
   /* — Hairline under the masthead once the page has scrolled — */
   const masthead = document.querySelector(".masthead");

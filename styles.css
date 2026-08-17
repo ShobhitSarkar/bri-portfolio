@@ -399,7 +399,8 @@ em { font-style: italic; }
   gap: clamp(1.5rem, 3vw, 3rem);
   overflow-x: auto;
   overflow-y: hidden;
-  touch-action: pan-x;
+  /* No touch-action override: let the browser direction-lock so a
+     horizontal drag scrolls the rail and a vertical drag scrolls the page. */
   overscroll-behavior-x: contain;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;

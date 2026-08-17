@@ -389,18 +389,59 @@ em { font-style: italic; }
   line-height: 1.6;
   margin-bottom: clamp(2.5rem, 5vw, 4.5rem);
 }
-.posts {
+.carousel { position: relative; }
+.carousel__rail {
   display: flex;
-  flex-wrap: wrap;
-  gap: clamp(2rem, 4vw, 3.75rem) clamp(1.5rem, 3vw, 3rem);
-  align-items: flex-start;
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 0.25rem;
+  /* bleed the rail to the page edge on small screens so cards can peek */
+  scroll-padding-inline: 0;
+}
+.carousel__rail::-webkit-scrollbar { display: none; }
+.carousel__rail:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 6px;
 }
 .post {
-  flex: 1 1 340px;
+  flex: 0 0 clamp(272px, 82vw, 460px);
+  scroll-snap-align: start;
   min-width: 0;
-  max-width: 504px;
   display: flex;
   flex-direction: column;
+}
+
+.carousel__controls {
+  display: flex; gap: 0.65rem;
+  justify-content: flex-end;
+  margin-top: clamp(1.5rem, 3vw, 2.25rem);
+}
+.carousel__controls[hidden] { display: none; }
+.carousel__btn {
+  width: 3rem; height: 3rem;
+  display: grid; place-items: center;
+  background: none;
+  border: 1px solid var(--rule);
+  border-radius: 100px;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background 0.3s var(--ease), color 0.3s var(--ease), border-color 0.3s var(--ease), opacity 0.3s var(--ease);
+}
+.carousel__btn:hover {
+  background: var(--ink); color: var(--paper); border-color: var(--ink);
+}
+.carousel__btn:disabled {
+  opacity: 0.3; cursor: default;
+}
+.carousel__btn:disabled:hover {
+  background: none; color: var(--ink); border-color: var(--rule);
+}
+@media (prefers-reduced-motion: reduce) {
+  .carousel__rail { scroll-behavior: auto; }
 }
 .post__embed {
   background: var(--paper);

@@ -24,11 +24,21 @@ Open `index.html` directly, or serve the folder:
 python3 -m http.server 8000   # then visit http://localhost:8000
 ```
 
-## Deploy
+## Deploy (Vercel)
 
-Any static host works (GitHub Pages, Netlify, Vercel). For GitHub Pages, enable
-Pages on this repository and point it at the branch root — no configuration
-needed.
+This is a zero-build static site, so Vercel needs no configuration beyond the
+committed `vercel.json` (which sets clean URLs, cache, and basic security
+headers).
+
+1. On [vercel.com](https://vercel.com), **Add New → Project** and import this
+   GitHub repository.
+2. Framework preset: **Other**. Leave Build Command and Output Directory empty —
+   Vercel serves the repository root and finds `index.html`.
+3. Deploy. Production tracks the `main` branch; every push to `main` redeploys,
+   and pull requests get their own preview URLs automatically.
+
+Any other static host (Netlify, GitHub Pages) works the same way with no build
+step.
 
 ## Editing content
 

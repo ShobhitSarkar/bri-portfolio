@@ -398,21 +398,18 @@ em { font-style: italic; }
 .post {
   flex: 1 1 340px;
   min-width: 0;
-  max-width: 552px;
+  max-width: 504px;
   display: flex;
   flex-direction: column;
 }
 .post__embed {
-  display: flex;
-  justify-content: center;
-  padding: clamp(0.9rem, 2.2vw, 1.75rem);
-  background: var(--paper-deep);
+  background: var(--paper);
   border: 1px solid var(--rule);
+  overflow: hidden;
 }
 .post__embed iframe {
   display: block;
   width: 100%;
-  max-width: 504px;
   border: 0;
   background: var(--paper);
   color-scheme: light;

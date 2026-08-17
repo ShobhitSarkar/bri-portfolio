@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="styles.css?v=8" />
+  <link rel="stylesheet" href="styles.css?v=9" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -109,88 +109,117 @@
         behind posts published to real audiences on LinkedIn.
       </p>
 
-      <div class="carousel reveal" data-carousel>
-        <div class="carousel__rail" id="posts-rail" tabindex="0" role="group" aria-label="Published LinkedIn posts">
-        <figure class="post">
-          <div class="post__embed">
-            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7472319519185870848?compact=1" height="399" width="504" frameborder="0" allowfullscreen title="LinkedIn post by Brianna Rivera — brand film" loading="lazy"></iframe>
-          </div>
-          <figcaption class="post__body">
-            <span class="post__meta">
-              <span class="post__index">01</span>
-              <span class="post__cat">Brand Film</span>
+      <ol class="gallery">
+        <li class="project reveal">
+          <button class="project__open" type="button"
+            data-embed="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7472319519185870848?collapsed=1"
+            data-href="https://www.linkedin.com/feed/update/urn:li:ugcPost:7472319519185870848"
+            data-title="X = Your Vision Realized"
+            data-meta="Brand Film · GRAYHILL"
+            data-caption="A short brand film built on a simple X / Y metaphor — sound, motion, and copy working together to land GRAYHILL&rsquo;s promise.">
+            <span class="project__frame">
+              <img src="work/li-01.jpg" alt="Brand film still — X = Your Vision Realized" loading="lazy" width="1280" height="720" />
             </span>
-            <h3 class="post__title">X = Your Vision Realized</h3>
-            <p class="post__desc">A short brand film built on a simple X / Y metaphor — sound, motion, and copy working together to land GRAYHILL&rsquo;s promise.</p>
-          </figcaption>
-        </figure>
-
-        <figure class="post">
-          <div class="post__embed">
-            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7487548964242800640?collapsed=1" height="550" width="504" frameborder="0" allowfullscreen title="LinkedIn post by Brianna Rivera — announcement" loading="lazy"></iframe>
-          </div>
-          <figcaption class="post__body">
-            <span class="post__meta">
-              <span class="post__index">02</span>
-              <span class="post__cat">Announcement</span>
+            <span class="project__meta">
+              <span class="project__index">01</span>
+              <span class="project__cat">Brand Film</span>
             </span>
-            <h3 class="post__title">Things Are Changing in 2027</h3>
-            <p class="post__desc">Announcing the functional-safety changes coming in Q1 2027 — framing what&rsquo;s changing and why it matters for the industry.</p>
-          </figcaption>
-        </figure>
-
-        <figure class="post">
-          <div class="post__embed">
-            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7486463870753124352?collapsed=1" height="628" width="504" frameborder="0" allowfullscreen title="LinkedIn post by Brianna Rivera — culture" loading="lazy"></iframe>
-          </div>
-          <figcaption class="post__body">
-            <span class="post__meta">
-              <span class="post__index">03</span>
-              <span class="post__cat">Team Culture</span>
+            <h3 class="project__title">X = Your Vision Realized</h3>
+            <p class="project__desc">A short brand film built on a simple X / Y metaphor — sound, motion, and copy working together.</p>
+            <span class="project__cue">View post
+              <svg viewBox="0 0 24 24" aria-hidden="true" width="14" height="14"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </span>
-            <h3 class="post__title">Annual Food Truck Day</h3>
-            <p class="post__desc">A recap of the team&rsquo;s yearly Food Truck Day — a people-first post celebrating the GRAYHILL cohort and the community behind the work.</p>
-          </figcaption>
-        </figure>
-
-        <figure class="post">
-          <div class="post__embed">
-            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7455648545212219392?collapsed=1" height="546" width="504" frameborder="0" allowfullscreen title="LinkedIn post by Brianna Rivera — brand campaign" loading="lazy"></iframe>
-          </div>
-          <figcaption class="post__body">
-            <span class="post__meta">
-              <span class="post__index">04</span>
-              <span class="post__cat">Brand Campaign</span>
-            </span>
-            <h3 class="post__title">Farmland &amp; Frontlines</h3>
-            <p class="post__desc">&ldquo;Different environments. Same demands.&rdquo; — a campaign post on how GRAYHILL&rsquo;s hardware holds up from the field to the frontlines.</p>
-          </figcaption>
-        </figure>
-
-        <figure class="post">
-          <div class="post__embed">
-            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7486148582241308673?collapsed=1" height="670" width="504" frameborder="0" allowfullscreen title="LinkedIn post by Brianna Rivera — team spotlight" loading="lazy"></iframe>
-          </div>
-          <figcaption class="post__body">
-            <span class="post__meta">
-              <span class="post__index">05</span>
-              <span class="post__cat">Team Spotlight</span>
-            </span>
-            <h3 class="post__title">Meet the 2026 Components Intern</h3>
-            <p class="post__desc">Introducing Christopher Kopiwoda, a Michigan State mechanical-engineering major — a spotlight post welcoming him to the components team.</p>
-          </figcaption>
-        </figure>
-        </div>
-
-        <div class="carousel__controls">
-          <button class="carousel__btn" type="button" data-carousel-prev aria-label="Previous posts" aria-controls="posts-rail">
-            <svg viewBox="0 0 24 24" aria-hidden="true" width="20" height="20"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
-          <button class="carousel__btn" type="button" data-carousel-next aria-label="Next posts" aria-controls="posts-rail">
-            <svg viewBox="0 0 24 24" aria-hidden="true" width="20" height="20"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </li>
+
+        <li class="project reveal">
+          <button class="project__open" type="button"
+            data-embed="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7487548964242800640?collapsed=1"
+            data-href="https://www.linkedin.com/feed/update/urn:li:ugcPost:7487548964242800640"
+            data-title="Things Are Changing in 2027"
+            data-meta="Announcement · GRAYHILL"
+            data-caption="Announcing the functional-safety changes coming in Q1 2027 — framing what&rsquo;s changing and why it matters for the industry.">
+            <span class="project__frame">
+              <img src="work/li-02.jpg" alt="Things Are Changing — functional safety announcement" loading="lazy" width="1306" height="720" />
+            </span>
+            <span class="project__meta">
+              <span class="project__index">02</span>
+              <span class="project__cat">Announcement</span>
+            </span>
+            <h3 class="project__title">Things Are Changing in 2027</h3>
+            <p class="project__desc">Announcing the functional-safety changes coming in Q1 2027 — what&rsquo;s changing and why it matters.</p>
+            <span class="project__cue">View post
+              <svg viewBox="0 0 24 24" aria-hidden="true" width="14" height="14"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
           </button>
-        </div>
-      </div>
+        </li>
+
+        <li class="project reveal">
+          <button class="project__open" type="button"
+            data-embed="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7486463870753124352?collapsed=1"
+            data-href="https://www.linkedin.com/feed/update/urn:li:ugcPost:7486463870753124352"
+            data-title="Annual Food Truck Day"
+            data-meta="Team Culture · GRAYHILL"
+            data-caption="A recap of the team&rsquo;s yearly Food Truck Day — a people-first post celebrating the GRAYHILL cohort and the community behind the work.">
+            <span class="project__frame">
+              <img src="work/li-03.jpg" alt="GRAYHILL team at the annual Food Truck Day" loading="lazy" width="800" height="532" />
+            </span>
+            <span class="project__meta">
+              <span class="project__index">03</span>
+              <span class="project__cat">Team Culture</span>
+            </span>
+            <h3 class="project__title">Annual Food Truck Day</h3>
+            <p class="project__desc">A people-first recap of the team&rsquo;s yearly Food Truck Day — the GRAYHILL cohort and its community.</p>
+            <span class="project__cue">View post
+              <svg viewBox="0 0 24 24" aria-hidden="true" width="14" height="14"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </button>
+        </li>
+
+        <li class="project reveal">
+          <button class="project__open" type="button"
+            data-embed="https://www.linkedin.com/embed/feed/update/urn:li:share:7455648545212219392?collapsed=1"
+            data-href="https://www.linkedin.com/feed/update/urn:li:share:7455648545212219392"
+            data-title="Farmland &amp; Frontlines"
+            data-meta="Brand Campaign · GRAYHILL"
+            data-caption="&ldquo;Different environments. Same demands.&rdquo; — a campaign post on how GRAYHILL&rsquo;s hardware holds up from the field to the frontlines.">
+            <span class="project__frame">
+              <img src="work/li-04.jpg" alt="Farmland &amp; Frontlines — different environments, same demands" loading="lazy" width="800" height="441" />
+            </span>
+            <span class="project__meta">
+              <span class="project__index">04</span>
+              <span class="project__cat">Brand Campaign</span>
+            </span>
+            <h3 class="project__title">Farmland &amp; Frontlines</h3>
+            <p class="project__desc">&ldquo;Different environments. Same demands.&rdquo; — how GRAYHILL&rsquo;s hardware holds up from field to frontline.</p>
+            <span class="project__cue">View post
+              <svg viewBox="0 0 24 24" aria-hidden="true" width="14" height="14"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </button>
+        </li>
+
+        <li class="project reveal">
+          <button class="project__open" type="button"
+            data-embed="https://www.linkedin.com/embed/feed/update/urn:li:share:7486148582241308673?collapsed=1"
+            data-href="https://www.linkedin.com/feed/update/urn:li:share:7486148582241308673"
+            data-title="Meet the 2026 Components Intern"
+            data-meta="Team Spotlight · GRAYHILL"
+            data-caption="Introducing Christopher Kopiwoda, a Michigan State mechanical-engineering major — a spotlight post welcoming him to the components team.">
+            <span class="project__frame">
+              <img src="work/li-05.jpg" alt="Team spotlight — 2026 Components Intern Christopher Kopiwoda" loading="lazy" width="1080" height="1350" />
+            </span>
+            <span class="project__meta">
+              <span class="project__index">05</span>
+              <span class="project__cat">Team Spotlight</span>
+            </span>
+            <h3 class="project__title">Meet the 2026 Components Intern</h3>
+            <p class="project__desc">A spotlight welcoming Christopher Kopiwoda, a Michigan State mechanical-engineering major, to the team.</p>
+            <span class="project__cue">View post
+              <svg viewBox="0 0 24 24" aria-hidden="true" width="14" height="14"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </button>
+        </li>
+      </ol>
     </section>
 
     <!-- ————————————————————————————— SELECTED WORK ————————————————————— -->
@@ -506,6 +535,7 @@
       </button>
       <figure class="lightbox__figure">
         <img class="lightbox__img" id="lb-img" alt="" />
+        <iframe class="lightbox__embed" id="lb-embed" title="LinkedIn post" frameborder="0" allowfullscreen hidden></iframe>
       </figure>
       <button class="lightbox__nav lightbox__nav--next" type="button" data-lb-next aria-label="Next page">
         <svg viewBox="0 0 24 24" aria-hidden="true" width="26" height="26"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -517,11 +547,14 @@
         <h3 class="lightbox__title" id="lb-title"></h3>
         <p class="lightbox__meta" id="lb-meta"></p>
         <p class="lightbox__caption" id="lb-caption"></p>
+        <a class="lightbox__link" id="lb-link" target="_blank" rel="noopener" hidden>View on LinkedIn
+          <svg viewBox="0 0 24 24" aria-hidden="true" width="14" height="14"><path d="M7 17L17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
       </div>
       <div class="lightbox__count"><span id="lb-index">1</span>&thinsp;/&thinsp;<span id="lb-total">1</span></div>
     </div>
   </div>
 
-  <script src="script.js?v=8" defer></script>
+  <script src="script.js?v=9" defer></script>
 </body>
 </html>

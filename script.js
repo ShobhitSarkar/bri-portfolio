@@ -159,6 +159,50 @@
     });
   }
 
+  /* — Card carousels (Published Work) — */
+  document.querySelectorAll(".carousel").forEach((root) => {
+    const rail = root.querySelector(".carousel__rail");
+    const prev = root.querySelector("[data-carousel-prev]");
+    const next = root.querySelector("[data-carousel-next]");
+    const controls = root.querySelector(".carousel__controls");
+    if (!rail || !prev || !next) return;
+
+    const stepAmount = () => {
+      const card = rail.firstElementChild;
+      const gap = parseFloat(getComputedStyle(rail).columnGap) || 0;
+      const cardWidth = card ? card.getBoundingClientRect().width : rail.clientWidth;
+      return cardWidth + gap;
+    };
+
+    const update = () => {
+      const maxScroll = rail.scrollWidth - rail.clientWidth;
+      if (controls) controls.hidden = maxScroll <= 2;
+      prev.disabled = rail.scrollLeft <= 1;
+      next.disabled = rail.scrollLeft >= maxScroll - 1;
+    };
+
+    prev.addEventListener("click", () => rail.scrollBy({ left: -stepAmount() }));
+    next.addEventListener("click", () => rail.scrollBy({ left: stepAmount() }));
+
+    let ticking = false;
+    rail.addEventListener(
+      "scroll",
+      () => {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            update();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      },
+      { passive: true }
+    );
+    window.addEventListener("resize", update);
+    window.addEventListener("load", update);
+    update();
+  });
+
   /* — Hairline under the masthead once the page has scrolled — */
   const masthead = document.querySelector(".masthead");
   if (masthead) {

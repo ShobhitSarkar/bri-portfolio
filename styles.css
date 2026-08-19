@@ -11,8 +11,8 @@
   --ink-soft:     #4d4739;
   --ink-faint:    #8a8474;
   --rule:         #d8d1c1;
-  --accent:       #a8432b;
-  --accent-deep:  #883421;
+  --accent:       #4c020f;
+  --accent-deep:  #360109;
 
   /* — Type — */
   --serif: "Fraunces", "Times New Roman", serif;
@@ -498,6 +498,21 @@ em { font-style: italic; }
   box-shadow: 0 24px 60px -30px rgba(20, 18, 12, 0.45);
 }
 .lightbox__embed[hidden] { display: none; }
+
+/* Live-embed mode (LinkedIn posts): the side nav is hidden, so the stage's
+   three-column grid would auto-place the lone figure into the left `auto`
+   track — pushing the post to the edge and letting its fixed height overrun
+   the caption bar. Collapse to a single centered column and let the post fit
+   the available stage height. */
+.lightbox.is-embed .lightbox__stage {
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+}
+.lightbox.is-embed .lightbox__figure { width: 100%; }
+.lightbox.is-embed .lightbox__embed {
+  height: min(680px, 100%);
+  max-height: 100%;
+}
 
 .lightbox__nav {
   z-index: 3;

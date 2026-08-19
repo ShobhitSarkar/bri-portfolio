@@ -71,6 +71,11 @@
         imgEl.hidden = true;
         imgEl.removeAttribute("src");
         embedEl.hidden = false;
+        // Optional per-post height (px) so a tall post shows fully without a
+        // nested scrollbar; falls back to the CSS default when unset.
+        embedEl.style.height = btn.dataset.embedHeight
+          ? btn.dataset.embedHeight + "px"
+          : "";
         embedEl.src = embedSrc;
         prevBtn.hidden = true;
         nextBtn.hidden = true;
@@ -103,6 +108,7 @@
       // force reflow so the transition runs
       void lightbox.offsetWidth;
       lightbox.classList.add("is-open");
+      lightbox.scrollTop = 0;
       document.body.style.overflow = "hidden";
       closeBtn.focus();
     };

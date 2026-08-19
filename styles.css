@@ -499,19 +499,30 @@ em { font-style: italic; }
 }
 .lightbox__embed[hidden] { display: none; }
 
-/* Live-embed mode (LinkedIn posts): the side nav is hidden, so the stage's
-   three-column grid would auto-place the lone figure into the left `auto`
-   track — pushing the post to the edge and letting its fixed height overrun
-   the caption bar. Collapse to a single centered column and let the post fit
-   the available stage height. */
+/* Live-embed mode (LinkedIn posts). Two things differ from the image gallery:
+   (1) the side nav is hidden, so the stage's three-column grid would auto-place
+   the lone figure into the left `auto` track — collapse to one centered column.
+   (2) the post is a cross-origin iframe whose content height we can't read, so
+   trapping it in a short box makes LinkedIn render its own inner scrollbar.
+   Instead give the iframe a tall height that fits the whole post and let the
+   entire modal scroll — no nested scroll inside the post. */
+.lightbox.is-embed {
+  display: block;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.lightbox.is-embed .lightbox__backdrop,
+.lightbox.is-embed .lightbox__close { position: fixed; }
 .lightbox.is-embed .lightbox__stage {
   grid-template-columns: minmax(0, 1fr);
   justify-items: center;
+  align-items: start;
+  min-height: 0;
 }
-.lightbox.is-embed .lightbox__figure { width: 100%; }
+.lightbox.is-embed .lightbox__figure { width: 100%; height: auto; }
 .lightbox.is-embed .lightbox__embed {
-  height: min(680px, 100%);
-  max-height: 100%;
+  height: var(--embed-h, 700px);
+  max-height: none;
 }
 
 .lightbox__nav {
